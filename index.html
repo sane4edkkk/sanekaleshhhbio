@@ -26,8 +26,6 @@
             position: relative;
             overflow-x: hidden;
         }
-
-        /* Анимированный градиентный фон */
         body::before {
             content: '';
             position: fixed;
@@ -69,9 +67,7 @@
             width: 100%;
             margin: 0 auto;
         }
-
-        /* ГЛАВНАЯ КАРТОЧКА — НОВЫЙ ДИЗАЙН */
-        .bio-card {
+        .bio-card 
             background: rgba(8, 8, 12, 0.75);
             backdrop-filter: blur(20px);
             border-radius: 2rem;
@@ -90,7 +86,6 @@
             transform: translateY(-3px);
         }
 
-        /* АВАТАР — НОВЫЙ ЭФФЕКТ */
         .avatar-section {
             text-align: center;
             margin-bottom: 1.2rem;
@@ -156,7 +151,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* ТЕГИ — ОБНОВЛЁННЫЕ */
         .tagline {
             display: flex;
             justify-content: center;
@@ -194,7 +188,6 @@
             color: #ffbbd0;
         }
 
-        /* ОПИСАНИЕ — НОВЫЙ СТИЛЬ */
         .bio-text {
             text-align: center;
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(20, 10, 30, 0.5));
@@ -214,7 +207,6 @@
             font-weight: 700;
         }
 
-        /* ДВЕ ГЛАВНЫЕ КНОПКИ — НОВЫЙ ЭФФЕКТ */
         .double-buttons {
             display: flex;
             gap: 16px;
@@ -257,7 +249,6 @@
             transform: scale(1.1);
         }
 
-        /* ОСТАЛЬНЫЕ ССЫЛКИ */
         .links-grid {
             display: flex;
             flex-direction: column;
@@ -312,7 +303,6 @@
             color: #ff2d6b;
         }
 
-        /* СОЦИАЛЬНЫЕ ИКОНКИ */
         .social-row {
             display: flex;
             justify-content: center;
@@ -354,7 +344,6 @@
             text-decoration: underline;
         }
 
-        /* АДАПТИВ */
         @media (max-width: 520px) {
             .bio-card {
                 padding: 1.5rem;
@@ -426,9 +415,8 @@
                     </div>
                     <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
                 </a>
-            </div>
-
-            <!-- ДОП. СОЦСЕТИ ИКОНКАМИ -->
+            </div
+                
             <div class="social-row">
                 <a href="https://www.tiktok.com/@sanekaleshhhh?_r=1&_t=ZS-96nG72fDj2y" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
                 <a href="https://steamcommunity.com/profiles/76561199050730556/" class="social-icon" target="_blank"><i class="fab fa-steam"></i></a>
@@ -444,7 +432,6 @@
     </div>
 
     <script>
-        // Плавное появление карточки
         const card = document.querySelector('.bio-card');
         if(card) {
             card.style.opacity = '0';
@@ -456,7 +443,7 @@
             }, 100);
         }
 
-        console.log("⚡ SANEK.ALESHHH | CONTENT-MAKER | TEXT UPDATED 🔥");
+        console.log("⚡ SANEK.ALESHHH | CONTENT-MAKER |  🔥");
     </script>
 </body>
 </html>
