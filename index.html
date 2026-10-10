@@ -14,8 +14,12 @@
             --secondary: #ffcc00;
             --tg: #229ED9;
             --tg-hover: #1d8ec4;
+            --faceit: #FF5500;
+            --faceit-hover: #e64d00;
             --verified: #1DA1F2;
             --accent: #00e5ff;
+            --by-red: #CF1010;
+            --by-green: #009543;
             --bg-dark: #050507;
             --bg-card: #0f0f13;
             --bg-card-hover: #16161c;
@@ -136,7 +140,7 @@
             box-shadow: 0 8px 20px rgba(34, 158, 217, 0.4);
         }
 
-        /* --- Hero с фоном --- */
+        /* --- Hero --- */
         header {
             min-height: 100vh;
             display: flex;
@@ -150,7 +154,6 @@
             background-color: #000;
         }
 
-        /* Затемняющий слой */
         header::before {
             content: '';
             position: absolute;
@@ -161,7 +164,6 @@
             z-index: 0;
         }
 
-        /* Неоновое свечение */
         header::after {
             content: '';
             position: absolute;
@@ -565,6 +567,27 @@
             text-transform: uppercase;
         }
 
+        /* --- Флаг Беларуси --- */
+        .flag-by {
+            display: inline-block;
+            width: 24px;
+            height: 17px;
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(207, 16, 16, 0.4), 0 0 3px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            vertical-align: middle;
+        }
+
+        .flag-by svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* --- Галочка верификации --- */
         .verified-badge {
             display: inline-flex;
             align-items: center;
@@ -645,6 +668,72 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 4px;
+        }
+
+        /* --- Кнопка Faceit --- */
+        .faceit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--faceit), var(--faceit-hover));
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 85, 0, 0.25);
+        }
+
+        .faceit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .faceit-btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .faceit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(255, 85, 0, 0.5);
+        }
+
+        .faceit-btn i,
+        .faceit-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .faceit-btn .faceit-icon {
+            font-size: 1.1rem;
+        }
+
+        .faceit-btn .arrow {
+            font-size: 0.8rem;
+            margin-left: auto;
+            transition: transform 0.3s;
+        }
+
+        .faceit-btn:hover .arrow {
+            transform: translateX(4px);
         }
 
         /* --- Карточка "В поиске" --- */
@@ -1008,6 +1097,12 @@
             box-shadow: 0 0 30px rgba(34, 158, 217, 0.5);
         }
 
+        .socials a.faceit-social:hover {
+            background: var(--faceit);
+            border-color: var(--faceit);
+            box-shadow: 0 0 30px rgba(255, 85, 0, 0.5);
+        }
+
         .copyright {
             color: var(--text-dim);
             font-size: 0.8rem;
@@ -1039,6 +1134,7 @@
             .hero-buttons { width: 100%; }
             .btn { width: 100%; justify-content: center; }
             .players-grid { grid-template-columns: 1fr; }
+            .player-name { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -1111,7 +1207,7 @@
         
         <div class="players-grid">
             
-            <!-- Игрок 1: Sanekaleshhh (верифицирован) -->
+            <!-- Игрок 1: Sanekaleshhh -->
             <div class="player-card">
                 <div class="player-avatar">
                     <span class="role-badge">Rifle</span>
@@ -1121,6 +1217,25 @@
                 <div class="player-body">
                     <h3 class="player-name">
                         sanekaleshhh
+                        <span class="flag-by" title="Беларусь">
+                            <svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="12" fill="#CF1010"/>
+                                <rect y="12" width="24" height="5" fill="#009543"/>
+                                <rect x="0" y="0" width="6" height="17" fill="#FFFFFF"/>
+                                <g fill="#CF1010">
+                                    <rect x="1" y="1.5" width="4" height="0.8"/>
+                                    <rect x="1" y="3" width="4" height="0.8"/>
+                                    <rect x="1" y="4.5" width="4" height="0.8"/>
+                                    <rect x="1" y="6" width="4" height="0.8"/>
+                                    <rect x="1" y="7.5" width="4" height="0.8"/>
+                                    <rect x="1" y="9" width="4" height="0.8"/>
+                                    <rect x="1" y="10.5" width="4" height="0.8"/>
+                                    <rect x="1" y="12" width="4" height="0.8"/>
+                                    <rect x="1" y="13.5" width="4" height="0.8"/>
+                                    <rect x="1" y="15" width="4" height="0.8"/>
+                                </g>
+                            </svg>
+                        </span>
                         <span class="verified-badge" title="Верифицирован"><i class="fa-solid fa-check"></i></span>
                     </h3>
                     <p class="player-real-name"><i class="fa-solid fa-user"></i> Александр</p>
@@ -1138,10 +1253,15 @@
                             <span class="stat-label">KPR</span>
                         </div>
                     </div>
+                    <a href="https://www.faceit.com/ru/players/sanekaleshhh" target="_blank" class="faceit-btn">
+                        <i class="fa-solid fa-fire faceit-icon"></i>
+                        <span>Faceit профиль</span>
+                        <i class="fa-solid fa-arrow-right arrow"></i>
+                    </a>
                 </div>
             </div>
 
-            <!-- Игрок 2: w1mer (верифицирован) -->
+            <!-- Игрок 2: w1mer -->
             <div class="player-card">
                 <div class="player-avatar">
                     <span class="role-badge awp">AWP</span>
@@ -1151,6 +1271,25 @@
                 <div class="player-body">
                     <h3 class="player-name">
                         w1mer
+                        <span class="flag-by" title="Беларусь">
+                            <svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="12" fill="#CF1010"/>
+                                <rect y="12" width="24" height="5" fill="#009543"/>
+                                <rect x="0" y="0" width="6" height="17" fill="#FFFFFF"/>
+                                <g fill="#CF1010">
+                                    <rect x="1" y="1.5" width="4" height="0.8"/>
+                                    <rect x="1" y="3" width="4" height="0.8"/>
+                                    <rect x="1" y="4.5" width="4" height="0.8"/>
+                                    <rect x="1" y="6" width="4" height="0.8"/>
+                                    <rect x="1" y="7.5" width="4" height="0.8"/>
+                                    <rect x="1" y="9" width="4" height="0.8"/>
+                                    <rect x="1" y="10.5" width="4" height="0.8"/>
+                                    <rect x="1" y="12" width="4" height="0.8"/>
+                                    <rect x="1" y="13.5" width="4" height="0.8"/>
+                                    <rect x="1" y="15" width="4" height="0.8"/>
+                                </g>
+                            </svg>
+                        </span>
                         <span class="verified-badge" title="Верифицирован"><i class="fa-solid fa-check"></i></span>
                     </h3>
                     <p class="player-real-name"><i class="fa-solid fa-user"></i> Снайпер</p>
@@ -1168,6 +1307,11 @@
                             <span class="stat-label">AWP%</span>
                         </div>
                     </div>
+                    <a href="https://www.faceit.com/ru/players/w1mer" target="_blank" class="faceit-btn">
+                        <i class="fa-solid fa-fire faceit-icon"></i>
+                        <span>Faceit профиль</span>
+                        <i class="fa-solid fa-arrow-right arrow"></i>
+                    </a>
                 </div>
             </div>
 
@@ -1274,7 +1418,7 @@
             <a href="https://t.me/Sanekaleshhh" target="_blank" title="Telegram" class="tg-social"><i class="fa-brands fa-telegram"></i></a>
             <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
             <a href="#" title="Steam"><i class="fa-brands fa-steam"></i></a>
-            <a href="#" title="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="#" title="Faceit" class="faceit-social"><i class="fa-solid fa-fire"></i></a>
         </div>
         <p class="copyright">&copy; 2024 TEAM ALESHHH666. Все права защищены. CS2 Esports Organization.</p>
     </footer>
