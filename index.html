@@ -147,24 +147,21 @@
             position: relative;
             padding: 120px 20px 60px;
             overflow: hidden;
-            background-image: url('https://i.ibb.co/placeholder-hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: #000;
         }
 
-        /* Затемняющий слой поверх фона */
+        /* Затемняющий слой */
         header::before {
             content: '';
             position: absolute;
             inset: 0;
             background: 
-                radial-gradient(circle at center, rgba(5, 5, 7, 0.6) 0%, rgba(5, 5, 7, 0.85) 60%, rgba(5, 5, 7, 0.98) 100%),
+                radial-gradient(circle at center, rgba(5, 5, 7, 0.55) 0%, rgba(5, 5, 7, 0.85) 60%, rgba(5, 5, 7, 0.98) 100%),
                 linear-gradient(180deg, rgba(5, 5, 7, 0.7) 0%, rgba(5, 5, 7, 0.4) 50%, rgba(5, 5, 7, 0.95) 100%);
             z-index: 0;
         }
 
-        /* Неоновое свечение по краям */
+        /* Неоновое свечение */
         header::after {
             content: '';
             position: absolute;
@@ -650,7 +647,7 @@
             margin-top: 4px;
         }
 
-        /* --- Карточка "В поиске" (кликабельная на ТГ) --- */
+        /* --- Карточка "В поиске" --- */
         .player-card.recruiting {
             background: rgba(255, 255, 255, 0.015);
             border: 1.5px dashed rgba(255, 255, 255, 0.15);
@@ -746,7 +743,7 @@
             opacity: 1;
         }
 
-        /* --- Секция Правил / Требований --- */
+        /* --- Секция Требований --- */
         .rules-section {
             padding: 100px 60px;
             max-width: 1200px;
@@ -1034,7 +1031,6 @@
             .roster-section, .cta-section, .rules-section { padding: 60px 25px; }
             .cta-box { padding: 40px 25px; }
             footer { padding: 40px 25px; }
-            header { background-attachment: scroll; }
         }
 
         @media (max-width: 480px) {
@@ -1063,7 +1059,7 @@
         </div>
     </nav>
 
-    <!-- Главный экран с фоном -->
+    <!-- Главный экран -->
     <header>
         <div class="hero-badge">
             <span class="dot"></span>
@@ -1120,7 +1116,7 @@
                 <div class="player-avatar">
                     <span class="role-badge">Rifle</span>
                     <span class="player-number">01</span>
-                    <img src="https://i.ibb.co/placeholder-sanekaleshhh.jpg" alt="sanekaleshhh" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><rect fill=%22%23000%22 width=%22400%22 height=%22400%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23ff5500%22 font-family=%22Arial%22 font-size=%2240%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>sanekaleshhh</text></svg>'">
+                    <img src="sanekaleshhh.jpg" alt="sanekaleshhh" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><rect fill=%22%23000%22 width=%22400%22 height=%22400%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23ff5500%22 font-family=%22Arial%22 font-size=%2240%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>sanekaleshhh</text></svg>'">
                 </div>
                 <div class="player-body">
                     <h3 class="player-name">
@@ -1150,7 +1146,7 @@
                 <div class="player-avatar">
                     <span class="role-badge awp">AWP</span>
                     <span class="player-number">02</span>
-                    <img src="https://i.ibb.co/placeholder-w1mer.jpg" alt="w1mer" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><rect fill=%22%23000%22 width=%22400%22 height=%22400%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23ffcc00%22 font-family=%22Arial%22 font-size=%2250%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>w1mer</text></svg>'">
+                    <img src="w1mer.jpg" alt="w1mer" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><rect fill=%22%23000%22 width=%22400%22 height=%22400%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23ffcc00%22 font-family=%22Arial%22 font-size=%2250%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>w1mer</text></svg>'">
                 </div>
                 <div class="player-body">
                     <h3 class="player-name">
@@ -1175,7 +1171,7 @@
                 </div>
             </div>
 
-            <!-- Игрок 3: В поиске IGL (клик → Telegram) -->
+            <!-- Игрок 3: В поиске IGL -->
             <a href="https://t.me/Sanekaleshhh" target="_blank" class="player-card recruiting">
                 <div class="recruiting-content">
                     <div class="recruiting-icon">
@@ -1190,7 +1186,7 @@
                 </div>
             </a>
 
-            <!-- Игрок 4: В поиске Support (клик → Telegram) -->
+            <!-- Игрок 4: В поиске Support -->
             <a href="https://t.me/Sanekaleshhh" target="_blank" class="player-card recruiting">
                 <div class="recruiting-content">
                     <div class="recruiting-icon">
@@ -1205,7 +1201,7 @@
                 </div>
             </a>
 
-            <!-- Игрок 5: В поиске Entry (клик → Telegram) -->
+            <!-- Игрок 5: В поиске Entry -->
             <a href="https://t.me/Sanekaleshhh" target="_blank" class="player-card recruiting">
                 <div class="recruiting-content">
                     <div class="recruiting-icon">
