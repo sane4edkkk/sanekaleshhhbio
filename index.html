@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEAM ALESHHH666 | CS2</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -17,9 +17,13 @@
             --faceit: #FF5500;
             --faceit-hover: #e64d00;
             --verified: #1DA1F2;
-            --accent: #00e5ff;
             --by-red: #CF1010;
             --by-green: #009543;
+            --ru-white: #FFFFFF;
+            --ru-blue: #0039A6;
+            --ru-red: #D52B1E;
+            --captain: #ffcc00;
+            --support: #00e5ff;
             --bg-dark: #050507;
             --bg-card: #0f0f13;
             --bg-card-hover: #16161c;
@@ -164,18 +168,42 @@
             z-index: 0;
         }
 
-        header::after {
-            content: '';
+        header .particles {
             position: absolute;
             inset: 0;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 85, 0, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(0, 229, 255, 0.1) 0%, transparent 40%);
             z-index: 0;
+            overflow: hidden;
             pointer-events: none;
         }
 
-        header > * {
+        header .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+            animation: floatParticle 15s infinite linear;
+            opacity: 0;
+        }
+
+        header .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        header .particle:nth-child(2) { left: 25%; animation-delay: 3s; }
+        header .particle:nth-child(3) { left: 45%; animation-delay: 6s; background: var(--secondary); box-shadow: 0 0 10px var(--secondary); }
+        header .particle:nth-child(4) { left: 60%; animation-delay: 2s; }
+        header .particle:nth-child(5) { left: 75%; animation-delay: 5s; background: var(--tg); box-shadow: 0 0 10px var(--tg); }
+        header .particle:nth-child(6) { left: 90%; animation-delay: 8s; }
+        header .particle:nth-child(7) { left: 35%; animation-delay: 10s; background: var(--secondary); box-shadow: 0 0 10px var(--secondary); }
+        header .particle:nth-child(8) { left: 55%; animation-delay: 12s; }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+
+        header > *:not(.particles) {
             position: relative;
             z-index: 1;
         }
@@ -279,17 +307,6 @@
             position: relative;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: #fff;
-            box-shadow: 0 10px 30px rgba(255, 85, 0, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 85, 0, 0.5);
-        }
-
         .btn-tg {
             background: linear-gradient(135deg, var(--tg), var(--tg-hover));
             color: #fff;
@@ -320,12 +337,7 @@
             box-shadow: 0 15px 40px rgba(34, 158, 217, 0.55);
         }
 
-        .btn-tg i {
-            font-size: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }
-
+        .btn-tg i,
         .btn-tg span {
             position: relative;
             z-index: 1;
@@ -346,7 +358,6 @@
             background: rgba(255, 85, 0, 0.05);
         }
 
-        /* Бегущая строка */
         .marquee {
             margin-top: 80px;
             width: 100%;
@@ -432,7 +443,7 @@
 
         .players-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
@@ -457,17 +468,76 @@
             background: linear-gradient(90deg, transparent, var(--primary), transparent);
             opacity: 0;
             transition: 0.4s;
+            z-index: 10;
+        }
+
+        .player-card::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(115deg, transparent 40%, rgba(255, 85, 0, 0.06) 50%, transparent 60%);
+            transform: rotate(0deg);
+            transition: 0.8s ease;
+            pointer-events: none;
+            z-index: 1;
         }
 
         .player-card:hover {
             transform: translateY(-8px);
             background: var(--bg-card-hover);
-            border-color: rgba(255, 85, 0, 0.3);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 85, 0, 0.1);
+            border-color: rgba(255, 85, 0, 0.35);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.6), 
+                0 0 40px rgba(255, 85, 0, 0.12),
+                inset 0 0 60px rgba(255, 85, 0, 0.03);
         }
 
         .player-card:hover::before {
             opacity: 1;
+        }
+
+        .player-card:hover::after {
+            top: -50%;
+            left: -50%;
+        }
+
+        .player-card.captain-card {
+            border-color: rgba(255, 204, 0, 0.3);
+            background: linear-gradient(180deg, rgba(255, 204, 0, 0.03) 0%, var(--bg-card) 100%);
+        }
+
+        .player-card.captain-card::before {
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+            opacity: 1;
+        }
+
+        .player-card.captain-card:hover {
+            border-color: rgba(255, 204, 0, 0.6);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.6), 
+                0 0 40px rgba(255, 204, 0, 0.18),
+                inset 0 0 60px rgba(255, 204, 0, 0.04);
+        }
+
+        .player-card.support-card {
+            border-color: rgba(0, 229, 255, 0.25);
+            background: linear-gradient(180deg, rgba(0, 229, 255, 0.03) 0%, var(--bg-card) 100%);
+        }
+
+        .player-card.support-card::before {
+            background: linear-gradient(90deg, transparent, var(--support), transparent);
+            opacity: 1;
+        }
+
+        .player-card.support-card:hover {
+            border-color: rgba(0, 229, 255, 0.55);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.6), 
+                0 0 40px rgba(0, 229, 255, 0.15),
+                inset 0 0 60px rgba(0, 229, 255, 0.04);
         }
 
         .player-avatar {
@@ -477,18 +547,32 @@
             background: radial-gradient(circle at center, #111 0%, #000 100%);
         }
 
-        .player-avatar img {
+        .player-avatar img,
+        .player-avatar svg {
             width: 100%;
             height: 100%;
             object-fit: contain;
             padding: 15px;
             transition: 0.5s;
             filter: contrast(120%) brightness(105%);
+            position: relative;
+            z-index: 2;
         }
 
-        .player-card:hover .player-avatar img {
+        .player-card:hover .player-avatar img,
+        .player-card:hover .player-avatar svg {
             transform: scale(1.04);
             filter: contrast(130%) brightness(110%) drop-shadow(0 0 20px rgba(255, 85, 0, 0.4));
+        }
+
+        .player-card.captain-card:hover .player-avatar img,
+        .player-card.captain-card:hover .player-avatar svg {
+            filter: contrast(130%) brightness(110%) drop-shadow(0 0 20px rgba(255, 204, 0, 0.5));
+        }
+
+        .player-card.support-card:hover .player-avatar img,
+        .player-card.support-card:hover .player-avatar svg {
+            filter: contrast(130%) brightness(110%) drop-shadow(0 0 20px rgba(0, 229, 255, 0.5));
         }
 
         .player-avatar::after {
@@ -500,7 +584,8 @@
             height: 60%;
             background: linear-gradient(to top, var(--bg-card) 5%, transparent 100%);
             pointer-events: none;
-            z-index: 1;
+            z-index: 3;
+            transition: 0.4s;
         }
 
         .player-card:hover .player-avatar::after {
@@ -521,13 +606,49 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             border-radius: 8px;
-            z-index: 2;
+            z-index: 4;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
 
         .role-badge.awp {
             background: rgba(255, 204, 0, 0.95);
             color: #000;
+        }
+
+        .role-badge.igl {
+            background: linear-gradient(135deg, #ffcc00, #ff9500);
+            color: #000;
+        }
+
+        .role-badge.support {
+            background: linear-gradient(135deg, #00e5ff, #0099cc);
+            color: #000;
+        }
+
+        .captain-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 12px;
+            background: linear-gradient(135deg, #ffcc00, #ff9500);
+            color: #000;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 8px;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+            animation: captainGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes captainGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 204, 0, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(255, 204, 0, 0.8); }
         }
 
         .player-number {
@@ -539,7 +660,7 @@
             font-weight: 700;
             color: rgba(255, 255, 255, 0.06);
             line-height: 1;
-            z-index: 2;
+            z-index: 4;
             letter-spacing: -2px;
         }
 
@@ -567,7 +688,6 @@
             text-transform: uppercase;
         }
 
-        /* --- Флаг Беларуси --- */
         .flag-by {
             display: inline-block;
             width: 24px;
@@ -585,9 +705,31 @@
             width: 100%;
             height: 100%;
             display: block;
+            padding: 0;
+            filter: none;
         }
 
-        /* --- Галочка верификации --- */
+        .flag-ru {
+            display: inline-block;
+            width: 24px;
+            height: 17px;
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+            box-shadow: 0 0 10px rgba(0, 57, 166, 0.4), 0 0 3px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            vertical-align: middle;
+        }
+
+        .flag-ru svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            padding: 0;
+            filter: none;
+        }
+
         .verified-badge {
             display: inline-flex;
             align-items: center;
@@ -641,6 +783,14 @@
             font-size: 0.7rem;
         }
 
+        .player-card.captain-card .player-real-name i {
+            color: var(--secondary);
+        }
+
+        .player-card.support-card .player-real-name i {
+            color: var(--support);
+        }
+
         .player-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -651,6 +801,21 @@
 
         .stat {
             text-align: center;
+            position: relative;
+        }
+
+        .stat::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .stat:last-child::after {
+            display: none;
         }
 
         .stat-value {
@@ -660,6 +825,30 @@
             color: var(--primary);
             font-size: 1.3rem;
             line-height: 1;
+            text-shadow: 0 0 15px rgba(255, 85, 0, 0.3);
+            transition: 0.3s;
+        }
+
+        .player-card.captain-card .stat-value {
+            color: var(--secondary);
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
+        }
+
+        .player-card.support-card .stat-value {
+            color: var(--support);
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+        }
+
+        .player-card:hover .stat-value {
+            text-shadow: 0 0 25px rgba(255, 85, 0, 0.6);
+        }
+
+        .player-card.captain-card:hover .stat-value {
+            text-shadow: 0 0 25px rgba(255, 204, 0, 0.6);
+        }
+
+        .player-card.support-card:hover .stat-value {
+            text-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
         }
 
         .stat-label {
@@ -670,7 +859,6 @@
             margin-top: 4px;
         }
 
-        /* --- Кнопка Faceit --- */
         .faceit-btn {
             display: flex;
             align-items: center;
@@ -736,7 +924,6 @@
             transform: translateX(4px);
         }
 
-        /* --- Карточка "В поиске" --- */
         .player-card.recruiting {
             background: rgba(255, 255, 255, 0.015);
             border: 1.5px dashed rgba(255, 255, 255, 0.15);
@@ -748,7 +935,8 @@
             color: inherit;
         }
 
-        .player-card.recruiting::before {
+        .player-card.recruiting::before,
+        .player-card.recruiting::after {
             display: none;
         }
 
@@ -832,7 +1020,6 @@
             opacity: 1;
         }
 
-        /* --- Секция Требований --- */
         .rules-section {
             padding: 100px 60px;
             max-width: 1200px;
@@ -856,6 +1043,17 @@
             overflow: hidden;
         }
 
+        .rule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(180deg, var(--primary), transparent);
+            transition: height 0.5s ease;
+        }
+
         .rule-card::after {
             content: '';
             position: absolute;
@@ -869,8 +1067,13 @@
 
         .rule-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 85, 0, 0.3);
+            border-color: rgba(255, 85, 0, 0.35);
             background: var(--bg-card-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .rule-card:hover::before {
+            height: 100%;
         }
 
         .rule-icon {
@@ -885,6 +1088,14 @@
             font-size: 1.3rem;
             color: var(--primary);
             margin-bottom: 20px;
+            transition: 0.4s;
+        }
+
+        .rule-card:hover .rule-icon {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: var(--glow);
+            transform: rotate(-8deg) scale(1.05);
         }
 
         .rule-card h3 {
@@ -902,7 +1113,6 @@
             line-height: 1.6;
         }
 
-        /* --- CTA Секция --- */
         .cta-section {
             padding: 80px 60px;
             max-width: 1200px;
@@ -983,11 +1193,6 @@
             z-index: 1;
         }
 
-        .cta-box .btn {
-            position: relative;
-            z-index: 1;
-        }
-
         .btn-tg-large {
             padding: 18px 45px;
             font-size: 1.1rem;
@@ -995,6 +1200,17 @@
             color: #fff;
             box-shadow: 0 10px 30px rgba(34, 158, 217, 0.4);
             overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
         }
 
         .btn-tg-large::before {
@@ -1040,7 +1256,6 @@
             color: var(--tg);
         }
 
-        /* --- Футер --- */
         footer {
             padding: 60px;
             border-top: 1px solid var(--border);
@@ -1108,7 +1323,6 @@
             font-size: 0.8rem;
         }
 
-        /* --- Анимации --- */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1119,7 +1333,6 @@
             50% { transform: scale(1.05); opacity: 0.8; }
         }
 
-        /* --- Адаптивность --- */
         @media (max-width: 968px) {
             nav { padding: 15px 25px; }
             .nav-links a:not(.nav-tg) { display: none; }
@@ -1157,6 +1370,17 @@
 
     <!-- Главный экран -->
     <header>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
         <div class="hero-badge">
             <span class="dot"></span>
             Counter-Strike 2
@@ -1175,7 +1399,6 @@
             </a>
         </div>
 
-        <!-- Бегущая строка -->
         <div class="marquee">
             <div class="marquee-track">
                 <div class="marquee-item">
@@ -1212,7 +1435,7 @@
                 <div class="player-avatar">
                     <span class="role-badge">Rifle</span>
                     <span class="player-number">01</span>
-                    <img src="sanekaleshhh.jpg" alt="sanekaleshhh" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><rect fill=%22%23000%22 width=%22400%22 height=%22400%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23ff5500%22 font-family=%22Arial%22 font-size=%2240%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>sanekaleshhh</text></svg>'">
+                    <img src="sanekaleshhh.jpg" alt="sanekaleshhh" onerror="this.style.display='none'; this.parentElement.innerHTML += '<svg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'><rect fill=\'#000\' width=\'400\' height=\'400\'/><text x=\'50%\' y=\'50%\' fill=\'#ff5500\' font-family=\'Arial\' font-size=\'40\' text-anchor=\'middle\' dominant-baseline=\'middle\'>sanekaleshhh</text></svg>'">
                 </div>
                 <div class="player-body">
                     <h3 class="player-name">
@@ -1239,6 +1462,7 @@
                         <span class="verified-badge" title="Верифицирован"><i class="fa-solid fa-check"></i></span>
                     </h3>
                     <p class="player-real-name"><i class="fa-solid fa-user"></i> Александр</p>
+
                     <div class="player-stats">
                         <div class="stat">
                             <span class="stat-value">1.25</span>
@@ -1266,7 +1490,7 @@
                 <div class="player-avatar">
                     <span class="role-badge awp">AWP</span>
                     <span class="player-number">02</span>
-                    <img src="w1mer.jpg" alt="w1mer" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><rect fill=%22%23000%22 width=%22400%22 height=%22400%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23ffcc00%22 font-family=%22Arial%22 font-size=%2250%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>w1mer</text></svg>'">
+                    <img src="w1mer.jpg" alt="w1mer" onerror="this.style.display='none'; this.parentElement.innerHTML += '<svg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'><rect fill=\'#000\' width=\'400\' height=\'400\'/><text x=\'50%\' y=\'50%\' fill=\'#ffcc00\' font-family=\'Arial\' font-size=\'50\' text-anchor=\'middle\' dominant-baseline=\'middle\'>w1mer</text></svg>'">
                 </div>
                 <div class="player-body">
                     <h3 class="player-name">
@@ -1293,6 +1517,7 @@
                         <span class="verified-badge" title="Верифицирован"><i class="fa-solid fa-check"></i></span>
                     </h3>
                     <p class="player-real-name"><i class="fa-solid fa-user"></i> Снайпер</p>
+
                     <div class="player-stats">
                         <div class="stat">
                             <span class="stat-value">1.30</span>
@@ -1315,35 +1540,92 @@
                 </div>
             </div>
 
-            <!-- Игрок 3: В поиске IGL -->
-            <a href="https://t.me/Sanekaleshhh" target="_blank" class="player-card recruiting">
-                <div class="recruiting-content">
-                    <div class="recruiting-icon">
-                        <i class="fa-solid fa-chess-king"></i>
-                    </div>
-                    <h3>В поиске</h3>
-                    <p>Нужен капитан с опытом</p>
-                    <span class="recruiting-role">IGL / Captain</span>
-                    <div class="recruiting-tg-hint">
-                        <i class="fa-brands fa-telegram"></i> Написать в Telegram
-                    </div>
+            <!-- Игрок 3: proznik (КАПИТАН) -->
+            <div class="player-card captain-card">
+                <div class="player-avatar">
+                    <span class="captain-badge"><i class="fa-solid fa-crown"></i> Captain</span>
+                    <span class="role-badge igl">IGL</span>
+                    <span class="player-number">03</span>
+                    <img src="proznik.jpg" alt="proznik" onerror="this.style.display='none'; this.parentElement.innerHTML += '<svg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'><rect fill=\'#000\' width=\'400\' height=\'400\'/><text x=\'50%\' y=\'50%\' fill=\'#ffcc00\' font-family=\'Arial\' font-size=\'50\' text-anchor=\'middle\' dominant-baseline=\'middle\'>proznik</text></svg>'">
                 </div>
-            </a>
+                <div class="player-body">
+                    <h3 class="player-name">
+                        proznik
+                        <span class="flag-ru" title="Россия">
+                            <svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="5.67" fill="#FFFFFF"/>
+                                <rect y="5.67" width="24" height="5.67" fill="#0039A6"/>
+                                <rect y="11.33" width="24" height="5.67" fill="#D52B1E"/>
+                            </svg>
+                        </span>
+                        <span class="verified-badge" title="Верифицирован"><i class="fa-solid fa-check"></i></span>
+                    </h3>
+                    <p class="player-real-name"><i class="fa-solid fa-crown"></i> Капитан команды</p>
 
-            <!-- Игрок 4: В поиске Support -->
-            <a href="https://t.me/Sanekaleshhh" target="_blank" class="player-card recruiting">
-                <div class="recruiting-content">
-                    <div class="recruiting-icon">
-                        <i class="fa-solid fa-shield-halved"></i>
+                    <div class="player-stats">
+                        <div class="stat">
+                            <span class="stat-value">1.28</span>
+                            <span class="stat-label">Rating</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">78%</span>
+                            <span class="stat-label">HS%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">0.72</span>
+                            <span class="stat-label">KPR</span>
+                        </div>
                     </div>
-                    <h3>В поиске</h3>
-                    <p>Игрок поддержки</p>
-                    <span class="recruiting-role">Support / Anchor</span>
-                    <div class="recruiting-tg-hint">
-                        <i class="fa-brands fa-telegram"></i> Написать в Telegram
-                    </div>
+                    <a href="https://www.faceit.com/ru/players/proznik" target="_blank" class="faceit-btn">
+                        <i class="fa-solid fa-fire faceit-icon"></i>
+                        <span>Faceit профиль</span>
+                        <i class="fa-solid fa-arrow-right arrow"></i>
+                    </a>
                 </div>
-            </a>
+            </div>
+
+            <!-- Игрок 4: void (SUPPORT) -->
+            <div class="player-card support-card">
+                <div class="player-avatar">
+                    <span class="role-badge support">Support</span>
+                    <span class="player-number">04</span>
+                    <img src="void.jpg" alt="void" onerror="this.style.display='none'; this.parentElement.innerHTML += '<svg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'><rect fill=\'#000\' width=\'400\' height=\'400\'/><text x=\'50%\' y=\'50%\' fill=\'#00e5ff\' font-family=\'Arial\' font-size=\'70\' text-anchor=\'middle\' dominant-baseline=\'middle\'>void</text></svg>'">
+                </div>
+                <div class="player-body">
+                    <h3 class="player-name">
+                        void
+                        <span class="flag-ru" title="Россия">
+                            <svg viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="24" height="5.67" fill="#FFFFFF"/>
+                                <rect y="5.67" width="24" height="5.67" fill="#0039A6"/>
+                                <rect y="11.33" width="24" height="5.67" fill="#D52B1E"/>
+                            </svg>
+                        </span>
+                        <span class="verified-badge" title="Верифицирован"><i class="fa-solid fa-check"></i></span>
+                    </h3>
+                    <p class="player-real-name"><i class="fa-solid fa-shield-halved"></i> Игрок поддержки</p>
+
+                    <div class="player-stats">
+                        <div class="stat">
+                            <span class="stat-value">1.15</span>
+                            <span class="stat-label">Rating</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">74%</span>
+                            <span class="stat-label">HS%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">0.85</span>
+                            <span class="stat-label">APR</span>
+                        </div>
+                    </div>
+                    <a href="https://www.faceit.com/ru/players/void" target="_blank" class="faceit-btn">
+                        <i class="fa-solid fa-fire faceit-icon"></i>
+                        <span>Faceit профиль</span>
+                        <i class="fa-solid fa-arrow-right arrow"></i>
+                    </a>
+                </div>
+            </div>
 
             <!-- Игрок 5: В поиске Entry -->
             <a href="https://t.me/Sanekaleshhh" target="_blank" class="player-card recruiting">
@@ -1374,12 +1656,12 @@
             <div class="rule-card">
                 <div class="rule-icon"><i class="fa-solid fa-ranking-star"></i></div>
                 <h3>Ранг</h3>
-                <p>Faceit Level 8+ или Premier 20 000+ MMR. Стабильная игра на высоком уровне.</p>
+                <p>Faceit Level 8+ или Premier 15 000+ MMR. Стабильная игра на высоком уровне.</p>
             </div>
             <div class="rule-card">
                 <div class="rule-icon"><i class="fa-solid fa-clock"></i></div>
                 <h3>Онлайн</h3>
-                <p>Возможность играть минимум 4-5 раз в неделю по 2-3 часа. Практики и скrims.</p>
+                <p>Возможность играть минимум 4-5 раз в неделю по 2-3 часа. Практики и скримы.</p>
             </div>
             <div class="rule-card">
                 <div class="rule-icon"><i class="fa-solid fa-microphone"></i></div>
